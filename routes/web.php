@@ -60,8 +60,17 @@ Route::get('/post/{id}/{title}', function ($id, $title) {
 })->name('post');
 */
 //Route::get('/', 'HomeController@index');
-Route::get('/', [HomeController::class, 'index']);//Laravel 8
+/*Route::get('/', [HomeController::class, 'index']);//Laravel 8
 Route::get('/about', [HomeController::class, 'about']);
 
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/get-contact', [HomeController::class, 'getContact'])->name('contact.get');
+*/
+
+Route::get('/', function () {
+    return view('frontend.layout');
+});
+
+Route::get('/portfolio', function () {
+    return view('frontend.portfolio');
+});

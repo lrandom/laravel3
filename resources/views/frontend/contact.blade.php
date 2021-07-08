@@ -11,13 +11,13 @@
 <form method="post" action="{{route('contact.get')}}">
     @csrf
     <div><input type="text" class="form-control" name="full_name"
-                placeholder="Full Name *"></div>
+                placeholder="Full Name *" value="{{old('full_name')}}"></div>
     <div style="color:red">
         {{$errors->first('full_name')}}
     </div>
 
     <div><input type="text" class="form-control" name="phone"
-                placeholder="Phone *"></div>
+                placeholder="Phone *" value="{{old('phone')}}"></div>
     <div style="color:red">
         {{$errors->first('phone')}}
     </div>

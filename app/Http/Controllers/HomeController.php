@@ -50,7 +50,7 @@ class HomeController extends Controller
         $request->validate([
             'full_name' => 'required',
             'email' => 'required|email',
-            'phone' => 'required|numeric|max:10|min:10'
+            'phone' => 'required|numeric'
         ]);
     }
 }
