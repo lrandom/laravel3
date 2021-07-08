@@ -8,6 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-Đây là homepage
+Đây là about page
 </body>
 </html>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,16 +13,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     $name = 'NIIT';
     $age = 20;
-    /* return view('frontend.home', [
+    return view('frontend.home', [
          'name' => $name,
          'age' => $age
-     ]);*/
+     ]);
 
-    /*return view('frontend.home', compact("name", "age"));*/
+    return view('frontend.home', compact("name", "age"));
 
     return view('frontend.home')->with('name', $name)->with('age', $age);
 });
@@ -34,13 +35,13 @@ Route::get('/about', function () {
     echo 'About me';
 });
 
-/*
+
 Route::get('/admin/user', function () {
     echo '/admin/user';
 });
 Route::get('/admin/post', function () {
     echo '/admin/post';
-});*/
+});
 
 Route::prefix('/admin')->group(function () {
     Route::get('/user', function () {
@@ -57,4 +58,10 @@ Route::get('/post/{id}/{title}', function ($id, $title) {
     echo $id;
     echo $title;
 })->name('post');
+*/
+//Route::get('/', 'HomeController@index');
+Route::get('/', [HomeController::class, 'index']);//Laravel 8
+Route::get('/about', [HomeController::class, 'about']);
 
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/get-contact', [HomeController::class, 'getContact'])->name('contact.get');
