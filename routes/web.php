@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -74,3 +75,9 @@ Route::get('/', function () {
 Route::get('/portfolio', function () {
     return view('frontend.portfolio');
 });
+
+Route::get('/get-category', [CategoryController::class, 'getCategory']);
+Route::get('/get-one-category', [CategoryController::class, 'getOne']);
+Route::get('/get-agg', [CategoryController::class, 'getAggration']);
+Route::get('/selection', [CategoryController::class, 'selection']);
+Route::get('/inner-join', [CategoryController::class, 'innerJoin']);
