@@ -78,4 +78,47 @@ class CategoryController extends Controller
             ->select('category.*', 'category.name as category_name', 'products.name as product_name')->get();
         dd($category);
     }
+
+    public function leftJoin ()
+    {
+        $category = DB::table('category')
+            ->leftJoin('products', 'products.category_id', '=', 'category.id')->get();
+        dd($category);
+    }
+
+    public function rightJoin ()
+    {
+        $category = DB::table('category')
+            ->rightJoin('products', 'products.category_id', '=', 'category.id')->get();
+        dd($category);
+    }
+
+    public function insert ()
+    {
+        DB::table('category')->insert(
+            [
+                'name' => 'Zara',
+                'slug' => 'zara',
+                'parent_id' => '1'
+            ],
+            [
+                'name' => 'Asics',
+                'slug' => 'asics',
+                'parent_id' => '1'
+            ]
+        );
+    }
+
+
+    public function update ()
+    {
+        DB::table('category')->where('id', 1)->update(
+            [
+                'name' => 'Rebook',
+                'slug' => 'rebook',
+                'parent_id' => '1'
+            ]
+        );
+    }
+
 }

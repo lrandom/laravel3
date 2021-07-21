@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrmCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -81,3 +82,48 @@ Route::get('/get-one-category', [CategoryController::class, 'getOne']);
 Route::get('/get-agg', [CategoryController::class, 'getAggration']);
 Route::get('/selection', [CategoryController::class, 'selection']);
 Route::get('/inner-join', [CategoryController::class, 'innerJoin']);
+Route::get('/left-join', [
+    CategoryController::class, 'leftJoin',
+]);
+
+Route::get('/right-join', [
+    CategoryController::class, 'rightJoin',
+]);
+
+Route::get('/insert', [
+    CategoryController::class, 'insert',
+]);
+
+
+Route::get('/update', [
+    CategoryController::class, 'update',
+]);
+
+Route::get('/orm/get-all', [
+    OrmCategoryController::class, 'getAll',
+]);
+
+Route::get('/orm/get-one', [
+    OrmCategoryController::class, 'findOne',
+]);
+
+Route::get('/orm/insert', [
+    OrmCategoryController::class, 'insert'
+]);
+
+Route::get('/orm/update', [
+    OrmCategoryController::class, 'update'
+]);
+
+Route::get('/orm/soft-delete', [
+    OrmCategoryController::class, 'softDelete'
+]);
+
+Route::get('/orm/get-only-trashed', [
+    OrmCategoryController::class, 'getOnlyTrashed'
+]);
+
+Route::get('/orm/restore', [
+    OrmCategoryController::class, 'restore'
+]);
+

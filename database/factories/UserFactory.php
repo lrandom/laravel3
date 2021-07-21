@@ -20,7 +20,7 @@ class UserFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition ()
     {
         return [
             'name' => $this->faker->name(),
@@ -36,7 +36,7 @@ class UserFactory extends Factory
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    public function unverified()
+    public function unverified ()
     {
         return $this->state(function (array $attributes) {
             return [
