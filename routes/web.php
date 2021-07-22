@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DemoRelationShip;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrmCategoryController;
+use App\Models\Order;
+use App\Models\Phone;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -127,3 +131,41 @@ Route::get('/orm/restore', [
     OrmCategoryController::class, 'restore'
 ]);
 
+Route::get('/category/paginate', [
+    OrmCategoryController::class, 'paginate',
+]);
+
+
+Route::get('/one-to-one', [
+    DemoRelationShip::class, 'oneToOne'
+]);
+
+Route::get('/one-to-many', [
+    DemoRelationShip::class, 'oneToMany'
+]);
+
+
+Route::get('/many-to-many', [
+    DemoRelationShip::class, 'manyToMany'
+]);
+
+Route::get('/insert_demo_data', function () {
+    $phone = new Phone();
+    $phone->home_phone = '0868120195';
+    $phone->personal_phone = '0868278290';
+    $phone->phoneable_type = User::class;
+    $phone->phoneable_id = 1;
+    $phone->save();
+
+    $phone = new Phone();
+    $phone->home_phone = '0868120195';
+    $phone->personal_phone = '0868278290';
+    $phone->phoneable_type = Order::class;
+    $phone->phoneable_id = 1;
+    $phone->save();
+
+});
+
+Route::get('/poly-one', [
+    DemoRelationShip::class, 'polyOne',
+]);

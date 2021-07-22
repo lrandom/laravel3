@@ -21,6 +21,17 @@ class OrmCategoryController extends Controller
         }
     }
 
+
+    public function paginate ()
+    {
+        $list = Category::paginate(10);
+        $list->appends([
+            'query' => 'NIIT', 'category_id' => 1,
+        ]);
+        return view('frontend/category', compact('list'));
+    }
+
+
     public function findOne ()
     {
         $categoryObj = Category::find(1);
