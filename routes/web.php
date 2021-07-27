@@ -4,9 +4,12 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DemoRelationShip;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrmCategoryController;
+use App\Models\Comment;
 use App\Models\Order;
 use App\Models\Phone;
+use App\Models\Post;
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -150,22 +153,44 @@ Route::get('/many-to-many', [
 ]);
 
 Route::get('/insert_demo_data', function () {
-    $phone = new Phone();
-    $phone->home_phone = '0868120195';
-    $phone->personal_phone = '0868278290';
-    $phone->phoneable_type = User::class;
-    $phone->phoneable_id = 1;
-    $phone->save();
+    for ($i = 0; $i < 3; $i++) {
+        $post = new Post();
+        $post->title = "Tin tức ".($i + 1);
+        $post->content = "Nội dung tin tức ".($i + 1);
+        $post->keyword = "Keyword tin tức ".($i + 1);
+        $post->save();
+    }
 
-    $phone = new Phone();
-    $phone->home_phone = '0868120195';
-    $phone->personal_phone = '0868278290';
-    $phone->phoneable_type = Order::class;
-    $phone->phoneable_id = 1;
-    $phone->save();
+    $comment = new Comment();
+    $comment->content = "Bình luận ở tin tức 1";
+    $comment->commentable_type = Post::class;
+    $comment->commentable_id = 1;
+    $comment->save();
 
+    $comment = new Comment();
+    $comment->content = "Bình luận ở tin tức 1 - Nội dung 2";
+    $comment->commentable_type = Post::class;
+    $comment->commentable_id = 1;
+    $comment->save();
+
+
+    $comment = new Comment();
+    $comment->content = "Bình luận ở sản phẩm 2 - Nội dung 1";
+    $comment->commentable_type = Product::class;
+    $comment->commentable_id = 2;
+    $comment->save();
+
+    $comment = new Comment();
+    $comment->content = "Bình luận ở sản phẩm 2 - Nội dung 2";
+    $comment->commentable_type = Product::class;
+    $comment->commentable_id = 2;
+    $comment->save();
 });
 
 Route::get('/poly-one', [
     DemoRelationShip::class, 'polyOne',
+]);
+
+Route::get('/poly-many', [
+    DemoRelationShip::class, 'polyMany',
 ]);

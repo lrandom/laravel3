@@ -18,4 +18,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Product::class, 'product_orders', 'order_id', 'product_id');
     }
+
+    public function comments ()
+    {
+        return $this->morphMany(Comment::class,'commentable');
+    }
 }

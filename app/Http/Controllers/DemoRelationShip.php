@@ -8,6 +8,7 @@ use App\Models\Phone;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Post;
 
 class DemoRelationShip extends Controller
 {
@@ -62,5 +63,18 @@ class DemoRelationShip extends Controller
         echo '<br>';
         $order = Order::find(1);
         echo $order->phone->home_phone;
+    }
+
+    public function polyMany ()
+    {
+        $post = Post::find(1);
+        foreach ($post->comments as $comment) {
+            echo $comment->content.'<br>';
+        }
+
+        $product = Product::find(2);
+        foreach ($product->comments as $comment) {
+            echo $comment->content.'<br>';
+        }
     }
 }
