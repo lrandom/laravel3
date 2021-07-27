@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class MakeOrderTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class MakeOrderTable extends Migration
      */
     public function up ()
     {
-        //
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('note');
-            $table->float('total');
-            $table->float('tax');
+            $table->string('title');
+            $table->longText('content');
+            $table->text('description');
+            $table->integer('category_id');//khoá ngoại
             $table->timestamps();
         });
     }
@@ -30,7 +30,6 @@ class MakeOrderTable extends Migration
      */
     public function down ()
     {
-        //
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('posts');
     }
 }

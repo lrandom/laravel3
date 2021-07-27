@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnDeletedAtToCategory extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddColumnDeletedAtToCategory extends Migration
      */
     public function up ()
     {
-        Schema::table('category', function (Blueprint $table) {
-            //
-            $table->softDeletes();
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +27,6 @@ class AddColumnDeletedAtToCategory extends Migration
      */
     public function down ()
     {
-        Schema::table('category', function (Blueprint $table) {
-            $table->dropSoftDeletes();
-        });
+        Schema::dropIfExists('categories');
     }
 }
