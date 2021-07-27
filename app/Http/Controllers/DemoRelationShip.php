@@ -77,4 +77,22 @@ class DemoRelationShip extends Controller
             echo $comment->content.'<br>';
         }
     }
+
+    public function manyToManyMorph ()
+    {
+        $category = Category::find(1);
+        foreach ($category->products as $product) {
+            echo 'Sản phẩm có id là'.$product->id.$product->name.'<br>';;
+        }
+
+        $category = Category::find(3);
+        foreach ($category->posts as $post) {
+            echo 'Post có id là'.$post->id.$post->name.'<br>';
+        }
+
+        $product = Product::find(1);
+        foreach ($product->categorys as $category) {
+            echo 'Danh mục có id là'.$category->id.$category->name.'<br>';
+        }
+    }
 }

@@ -13,4 +13,10 @@ class Post extends Model
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
+
+    public function categoryes ()
+    {
+        return $this->morphToMany(Category::class, 'categoryable');
+    }
+
 }

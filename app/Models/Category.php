@@ -21,8 +21,19 @@ class Category extends Model
         'parent_id'
     ];
 
+    /*    public function products ()
+        {
+            return $this->hasMany(Product::class);
+        }*/
+
+
+    public function posts ()
+    {
+        return $this->morphedByMany(Post::class, 'categoryable');
+    }
+
     public function products ()
     {
-        return $this->hasMany(Product::class);
+        return $this->morphedByMany(Product::class, 'categoryable');
     }
 }

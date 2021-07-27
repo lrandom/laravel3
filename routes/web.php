@@ -194,3 +194,8 @@ Route::get('/poly-one', [
 Route::get('/poly-many', [
     DemoRelationShip::class, 'polyMany',
 ]);
+
+
+Route::get('/poly-many-many', [
+    DemoRelationShip::class, 'manyToManyMorph',
+]);

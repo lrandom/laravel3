@@ -9,10 +9,10 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function category ()
-    {
-        return $this->belongsTo(Category::class);
-    }
+    /*    public function category ()
+        {
+            return $this->belongsTo(Category::class);
+        }*/
 
     public function orders ()
     {
@@ -21,6 +21,11 @@ class Product extends Model
 
     public function comments ()
     {
-        return $this->morphMany(Comment::class,'commentable');
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    public function categorys ()
+    {
+        return $this->morphToMany(Category::class, 'categoryable');
     }
 }
