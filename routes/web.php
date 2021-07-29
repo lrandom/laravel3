@@ -1,23 +1,35 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\QuestionController;
+use App\Http\Controllers\Admin\SectionController;
+use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('admin/category')->group(function () {
-    Route::get('/', [CategoryController::class, 'list'])->name('category.list');
-    Route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
-    Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
-    Route::post('/edit', [CategoryController::class, 'doEdit'])->name('category.doEdit');
-    Route::get('/add', [CategoryController::class, 'add'])->name('category.add');
-    Route::post('/do-add', [CategoryController::class, 'doAdd'])->name('category.doAdd');
+Route::prefix('admin/section')->group(function () {
+    Route::get('/', [SectionController::class, 'list'])->name('section.list');
+    Route::get('/delete/{id}', [SectionController::class, 'delete'])->name('section.delete');
+    Route::get('/edit/{id}', [SectionController::class, 'edit'])->name('section.edit');
+    Route::post('/edit', [SectionController::class, 'doEdit'])->name('section.doEdit');
+    Route::get('/add', [SectionController::class, 'add'])->name('section.add');
+    Route::post('/do-add', [SectionController::class, 'doAdd'])->name('section.doAdd');
 });
 
-Route::prefix('admin/post')->group(function () {
-    Route::get('/', [PostController::class, 'list'])->name('post.list');
-    Route::get('/delete/{id}', [PostController::class, 'delete'])->name('post.delete');
-    Route::get('/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
-    Route::post('/edit', [PostController::class, 'doEdit'])->name('post.doEdit');
-    Route::get('/add', [PostController::class, 'add'])->name('post.add');
-    Route::post('/do-add', [PostController::class, 'doAdd'])->name('post.doAdd');
+Route::prefix('admin/question')->group(function () {
+    Route::get('/', [QuestionController::class, 'list'])->name('question.list');
+    Route::get('/delete/{id}', [QuestionController::class, 'delete'])->name('question.delete');
+    Route::get('/edit/{id}', [QuestionController::class, 'edit'])->name('question.edit');
+    Route::post('/edit', [QuestionController::class, 'doEdit'])->name('question.doEdit');
+    Route::get('/add', [QuestionController::class, 'add'])->name('question.add');
+    Route::post('/do-add', [QuestionController::class, 'doAdd'])->name('question.doAdd');
 });
+
+Route::get('/', [
+    BaseController::class,
+    'home',
+]);
+
+Route::get('/{section_id}', [
+    BaseController::class,
+    'testDetail',
+])->name('ui.test');

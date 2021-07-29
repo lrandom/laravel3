@@ -1,7 +1,7 @@
 @extends('backend.layout')
 @section('content')
     <a class="bg-blue-500 w-36 text-center block rounded mx-auto text-white p-1 my-5"
-       href="{{route('category.add')}}">Add</a>
+       href="{{route('section.add')}}">Add</a>
     <div class="bg-white mt-5 w-full p-2">
         <table class="table-auto w-full">
             <tr class="font-bold">
@@ -16,8 +16,8 @@
                     <td>{{$item->name}}</td>
                     <td>
                         <a onclick="return confirm('Bạn có chắc chắn muốn xoá không')"
-                           href="{{route('category.delete',['id'=>$item->id])}}">Xoá</a>
-                        <a href="{{route('category.edit',['id'=>$item->id])}}">Sửa</a>
+                           href="{{route('section.delete',['id'=>$item->id])}}">Xoá</a>
+                        <a href="{{route('section.edit',['id'=>$item->id])}}">Sửa</a>
                     </td>
                 </tr>
             @endforeach

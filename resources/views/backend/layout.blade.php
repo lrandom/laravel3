@@ -16,8 +16,8 @@
         </div>
 
         <div class="flex space-x-2 text-bold">
-            <div><a href="{{route('category.list')}}">Category</a></div>
-            <div><a href="{{route('post.list')}}">Post</a></div>
+            <div><a href="{{route('section.list')}}">Section</a></div>
+            <div><a href="{{route('question.list')}}">Question</a></div>
         </div>
     </nav>
 
