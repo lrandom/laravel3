@@ -15,7 +15,7 @@ interface ICrud
 
     public function doAdd (Request $request);//DO POST ACTION
 
-    public function edit ();//LOAD GIAO DIỆN SỬA
+    public function edit ($id);//LOAD GIAO DIỆN SỬA
 
     public function doEdit (Request $request);//DO EDIT ACTION
 

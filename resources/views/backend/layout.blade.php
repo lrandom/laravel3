@@ -9,13 +9,19 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <nav>
-        <div><a href="">Category</a></div>
-        <div><a href="">Post</a></div>
+<div class="container-fluid mx-auto bg-indigo-50">
+    <nav class="w-full flex justify-between items-center shadow px-5 bg-white">
+        <div>
+            <img class="w-20" src="https://seeklogo.com/images/C/CMS-logo-5598CC4E0F-seeklogo.com.gif"/>
+        </div>
+
+        <div class="flex space-x-2 text-bold">
+            <div><a href="{{route('category.list')}}">Category</a></div>
+            <div><a href="{{route('post.list')}}">Post</a></div>
+        </div>
     </nav>
 
-    <div>
+    <div class="h-screen">
         @section('content')
 
         @show
