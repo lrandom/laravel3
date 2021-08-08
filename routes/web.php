@@ -33,3 +33,72 @@ Route::get('/{section_id}', [
     BaseController::class,
     'testDetail',
 ])->name('ui.test');
+
+Route::get('/demo-collection/each', function () {
+    /*$data = collect([1,2,3,4,5]);
+    $data->each(function ($item,$index){
+        echo $index;
+        echo $item;
+        echo '<br>';
+    });
+
+    function each($items,$fnc){
+        for ($i = 0; $i < count($items); $i++) {
+            $fnc($items[$i],$i);
+        }
+    }
+
+    each([1,2,3,4,5,6],function ($iem,$i){
+
+    });*/
+
+    //demo về map
+
+    /*$data = collect([1, 2, 3, 4]);
+    $data = $data->map(function ($item){
+        return $item*2;
+    });
+    dd($data->all());*/
+
+    /*$data = collect([
+        [
+            'name' => 'Luan'
+        ],
+        [
+            'name' => 'Nam'
+        ]
+    ]);
+
+    $newData = $data->pluck('name');
+    dd($newData->all());*/
+
+    /*$data = collect([4, 2, 3, 7, 8]);
+    $filterData = $data->filter(function ($item) {
+        return $item > 4;
+    });
+    dd($filterData->all());*/
+
+   /* $data = collect(["Nam", "Ninh", "Luan", "An"]);
+    $filterName = $data->filter(function ($item) {
+        return substr($item, 0, 1) === 'N';
+    });
+    dd($filterName->all());*/
+
+    /*$data = collect([
+        [
+            0, 1, 2, 3
+        ],
+        [
+            1, 4, 5, 6
+        ]
+    ]);
+
+    $flattenData = $data->flatten(true);
+    dd($flattenData->all());*/
+
+
+    $data = collect([1, 2, 3, 4]);
+    $incrementData = $data->incrementTen();
+    dd($incrementData->all());
+});
+

@@ -26,5 +26,14 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         //Paginator::useBootstrap();
+
+        \Illuminate\Support\Collection::macro('incrementTen',function (){
+            return $this->map(function ($item){
+                return $item+10;
+            });
+        });
+
+
+
     }
 }
