@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Phone;
+use App\Models\Product;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\ProductOrder;
@@ -16,7 +17,7 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run ()
+    public function run()
     {
         //User::factory(10)->create();
         //Phone::factory(1)->create();
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
 
         // Order::factory(10)->create();
 
-        ProductOrder::factory(1)->create();
+        //ProductOrder::factory(1)->create();
+        Product::factory(6)->create();
     }
 }

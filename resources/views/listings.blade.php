@@ -8,6 +8,13 @@
     <title>Document</title>
 </head>
 <body>
-Đây là homepage
+@foreach($products as $product)
+   <div>
+       <h4>{{$product->name}}</h4>
+       <img src="{{$product->img}}" style="width:100px"/>
+       <p>{{$product->price}}</p>
+       <a href="{{route('addCart',['id'=>$product->id])}}">Add to Cart</a>
+   </div>
+@endforeach
 </body>
 </html>
