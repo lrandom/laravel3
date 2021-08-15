@@ -155,9 +155,9 @@ Route::get('/many-to-many', [
 Route::get('/insert_demo_data', function () {
     for ($i = 0; $i < 3; $i++) {
         $post = new Post();
-        $post->title = "Tin tức ".($i + 1);
-        $post->content = "Nội dung tin tức ".($i + 1);
-        $post->keyword = "Keyword tin tức ".($i + 1);
+        $post->title = "Tin tức " . ($i + 1);
+        $post->content = "Nội dung tin tức " . ($i + 1);
+        $post->keyword = "Keyword tin tức " . ($i + 1);
         $post->save();
     }
 
@@ -193,4 +193,25 @@ Route::get('/poly-one', [
 
 Route::get('/poly-many', [
     DemoRelationShip::class, 'polyMany',
+]);
+
+
+Route::get('/set-session', [
+    \App\Http\Controllers\SessionController::class,
+    'setSession'
+]);
+
+Route::get('/get-session', [
+    \App\Http\Controllers\SessionController::class,
+    'getSession'
+]);
+
+Route::get('/set-flash-session', [
+    \App\Http\Controllers\SessionController::class,
+    'setFlashSession'
+]);
+
+Route::get('/get-flash-session', [
+    \App\Http\Controllers\SessionController::class,
+    'getFlashSession'
 ]);
