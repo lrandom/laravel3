@@ -82,7 +82,6 @@ class Cart extends Controller
         }*/
 
 
-
         $request->session()->put('CART', $cart->toArray());
         return redirect('/cart');
     }

@@ -20,6 +20,16 @@ Route::get('delete-cart-item/{id}', [\App\Http\Controllers\Cart::class, 'deleteC
 Route::get('update-quantity/{id}/{quantity}', [\App\Http\Controllers\Cart::class, 'updateQuantity'])
     ->name('updateQuantity');
 
-Route::get('/clear-old-session',function (){
-   \Illuminate\Support\Facades\Session::flush();
+Route::get('/clear-old-session', function () {
+    \Illuminate\Support\Facades\Session::flush();
+});
+
+Route::get('send-mail', function () {
+ /*   \Illuminate\Support\Facades\Mail::to(collect(["beginlive@gmail.com", "mmochicken92@gmail.com"]))
+        ->send(new \App\Mail\OrderSuccessed("Mail from NIIT"));*/
+    \Illuminate\Support\Facades\Mail::to("beginlive@gmail.com")->send(new \App\Mail\OrderCancel());
+});
+
+Route::get('run-job', function () {
+    dispatch(new \App\Jobs\SendMail());
 });
