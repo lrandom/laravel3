@@ -12,6 +12,7 @@ class Cart extends Controller
         if ($request->session()->exists('CART')) {
             //đã có giỏ hàng
             $cart = $request->session()->get('CART');
+            //dd($cart);
             $found = false;
             for ($i = 0; $i < count($cart); $i++) {
                 if ($id == $cart[$i]['product']->id) {
@@ -62,19 +63,35 @@ class Cart extends Controller
         $cart = $request->session()->get('CART');
         $cartClc = collect($cart);
         $cart = $cartClc->filter(function ($item) use ($id) {
-            return $item['product']->id != $id;
+         return $item['product']->id != $id;
         });
 
-        $cart = $cart->toArray();
-        $request->session()->put('CART', $cart);
+  /*      [
+            "0"=>"sp1",
+            "1"=>"spn2"
+        ];*/
+
+        $cart = collect($cart->values());//đánh lại chỉ số
+
+
+/*        for ($i = 0; $i < count($cart); $i++) {
+            if ($cart[$i]['product']->id == $id) {
+                array_splice($cart, $i, 1);
+                break;
+            }
+        }*/
+
+
+
+        $request->session()->put('CART', $cart->toArray());
         return redirect('/cart');
     }
 
-    public function updateQuantity($id,$quantity, Request $request)
+    public function updateQuantity($id, $quantity, Request $request)
     {
         $cart = $request->session()->get('CART');
         $cartClc = collect($cart);
-        $cart = $cartClc->map(function ($item) use ($id,$quantity) {
+        $cart = $cartClc->map(function ($item) use ($id, $quantity) {
             if ($item['product']->id == $id) {
                 //tang/giam sl
                 $item['quantity'] = $item['quantity'] + $quantity;

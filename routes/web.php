@@ -19,3 +19,7 @@ Route::get('cart', [\App\Http\Controllers\Cart::class, 'getCart']);
 Route::get('delete-cart-item/{id}', [\App\Http\Controllers\Cart::class, 'deleteCartItem'])->name('deleteCartItem');
 Route::get('update-quantity/{id}/{quantity}', [\App\Http\Controllers\Cart::class, 'updateQuantity'])
     ->name('updateQuantity');
+
+Route::get('/clear-old-session',function (){
+   \Illuminate\Support\Facades\Session::flush();
+});
