@@ -17,3 +17,22 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/users', function () {
+   $users= \App\Models\User::all();
+    return response()->json(['users' => $users], \Symfony\Component\HttpFoundation\Response::HTTP_OK);
+});
+
+Route::post('/login', function (Request $request) {
+    $check = \Illuminate\Support\Facades\Auth::attempt([
+        'email' => $request->email,
+        'password' => $request->password
+    ]);
+
+    if($check){
+        $user = \App\Models\User::where('email', $request->email)->first();
+        //dd($user);
+        $token = $user->createToken('user')->accessToken;
+        return response()->json(['token' => $token], 200);
+    }
+});

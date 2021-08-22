@@ -33,3 +33,28 @@ Route::get('send-mail', function () {
 Route::get('run-job', function () {
     dispatch(new \App\Jobs\SendMail());
 });
+
+Route::get('/locale', function (\Illuminate\Http\Request $request) {
+    $lang = $request->query('lang');
+    \Illuminate\Support\Facades\App::setLocale($lang);
+    $name = 'Luan';
+    return view('local',compact('name'));
+});
+
+Route::get('/server', function () {
+    echo "laravel";
+});
+
+Route::get('/ajax', function () {
+    return view('ajax');
+});
+
+
+Route::get('/create-user', function () {
+   \App\Models\User::create([
+       'email' => 'b@gmail.com',
+       'password'=>\Illuminate\Support\Facades\Hash::make("12345678"),
+       'name' => 'bdmin',
+       'api_token'=>\Illuminate\Support\Str::random(60)
+   ]);
+});
